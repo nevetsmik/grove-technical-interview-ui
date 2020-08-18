@@ -2,7 +2,7 @@ import { reactive, toRefs } from "vue";
 import Papa from "papaparse";
 
 export default function useLoadCsvFile() {
-  const data = reactive({ data: [], isDataLoaded: false });
+  const data = reactive({ stores: [], isDataLoaded: false });
   const loadCsv = async (event, csvFile) => {
     const parseFile = (csvFile) =>
       new Promise((resolve, reject) => {
@@ -18,7 +18,7 @@ export default function useLoadCsvFile() {
       });
     const stores = await parseFile(csvFile);
 
-    data.data = stores;
+    data.stores = stores;
     data.isDataLoaded = true;
   };
   return { ...toRefs(data), loadCsv };

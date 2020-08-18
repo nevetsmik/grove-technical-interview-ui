@@ -25,7 +25,7 @@
         </select>
       </div>
       <div>
-        <button @click.prevent="findClosestStore(data, location, unit)">
+        <button @click.prevent="findClosestStore(stores, location, unit)">
           Find Closest Store
         </button>
       </div>
@@ -56,11 +56,11 @@ export default {
     };
   },
   setup() {
-    const { data, isDataLoaded, loadCsv } = useLoadCsvFile();
+    const { stores, isDataLoaded, loadCsv } = useLoadCsvFile();
     const { result, error, loading, findClosestStore } = useFindStore();
     return {
       isDataLoaded,
-      data,
+      stores,
       loadCsv,
       result,
       error,
